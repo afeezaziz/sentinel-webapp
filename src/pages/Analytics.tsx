@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Download, FileText, Plus, Calendar, AlertCircle, Brain, Database, FileEdit, CheckCircle, Loader2, BarChart3, TrendingUp } from 'lucide-react'
+import { Download, FileText, Plus, Calendar, Brain, Database, CheckCircle, Loader2, BarChart3, TrendingUp } from 'lucide-react'
 import { Button } from '../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table'
@@ -8,7 +8,6 @@ import { Skeleton } from '../components/ui/skeleton'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs'
 import { Progress } from '../components/ui/progress'
 import { Textarea } from '../components/ui/textarea'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select'
 import { toast } from 'sonner'
 
 interface Report {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { ArrowLeft, User, Mail, Phone, Edit, Shield, Activity, Calendar, Building, CheckCircle, XCircle, AlertTriangle, Key, FileText, Settings, Eye, EyeOff } from 'lucide-react'
+import { ArrowLeft, User, Mail, Phone, Edit, Activity, Calendar, Building, CheckCircle, XCircle, AlertTriangle, Key, FileText, Eye, EyeOff } from 'lucide-react'
 import { Button } from '../../components/ui/button'
 import { Badge } from '../../components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card'
@@ -180,10 +180,7 @@ export default function UserDetail() {
     return new Date(dateString).toLocaleDateString()
   }
 
-  const formatDateTime = (dateString: string) => {
-    return new Date(dateString).toLocaleString()
-  }
-
+  
   const getActivityIcon = (status: string) => {
     switch (status) {
       case 'success':
@@ -421,7 +418,7 @@ export default function UserDetail() {
                       {user.role === 'admin' && 'Full administrative access to all organizations and users'}
                       {user.role === 'engineer' && 'Engineer access within assigned organization'}
                       {user.role === 'field_tech' && 'Field technician access for assigned tasks'}
-                      {(!user.role || user.role === 'user') && 'Standard user access'}
+                      {!user.role && 'Standard user access'}
                     </p>
                   </div>
                   <Badge className={getRoleColor(user.role)}>

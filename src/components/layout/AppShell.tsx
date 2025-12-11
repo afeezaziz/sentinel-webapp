@@ -6,7 +6,6 @@ import {
   FileText,
   Settings,
   Menu,
-  X,
   ChevronRight,
   User,
   LogOut,
@@ -15,7 +14,7 @@ import {
   Building2
 } from 'lucide-react'
 import { useSupabase } from '../../hooks/useSupabase'
-import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
+import { Sheet, SheetContent } from '../ui/sheet'
 import { Button } from '../ui/button'
 import {
   DropdownMenu,
@@ -25,6 +24,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
+
+interface NavigationItem {
+  name: string
+  href: string
+  icon: React.ComponentType<any>
+  isHeader?: boolean
+}
 
 interface AppShellProps {
   children: React.ReactNode
@@ -40,7 +46,7 @@ export default function AppShell({ children }: AppShellProps) {
   const userRole = user?.role || 'user'
 
   // Navigation for admin users (showing admin-specific pages)
-  const adminNavigation = [
+  const adminNavigation: NavigationItem[] = [
     { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
     { name: 'Risk Management', href: '/admin/risks', icon: AlertTriangle },
     { name: 'Assets', href: '/admin/assets', icon: Activity },
@@ -52,7 +58,7 @@ export default function AppShell({ children }: AppShellProps) {
   ]
 
   // Navigation for regular users
-  const userNavigation = [
+  const userNavigation: NavigationItem[] = [
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
     { name: 'Risk Management', href: '/risks', icon: AlertTriangle },
     { name: 'Assets', href: '/assets', icon: Activity },
@@ -60,7 +66,7 @@ export default function AppShell({ children }: AppShellProps) {
   ]
 
   // Choose navigation based on user role
-  const navigation = userRole === 'admin' ? adminNavigation : userNavigation
+  const navigation: NavigationItem[] = userRole === 'admin' ? adminNavigation : userNavigation
 
   const getBreadcrumbPath = () => {
     const path = location.pathname.substring(1) // Remove leading slash

@@ -2,15 +2,12 @@ import { useState, useEffect } from 'react'
 import {
   BarChart3,
   TrendingUp,
-  TrendingDown,
   Users,
   Building2,
   AlertTriangle,
   Activity,
   PieChart,
-  Calendar,
   Download,
-  Filter,
   Shield
 } from 'lucide-react'
 import { Button } from '../../components/ui/button'
@@ -91,11 +88,11 @@ export default function AdminAnalytics() {
       try {
         const { data: risks } = await supabase.from('risks').select('severity, status')
         if (risks) {
-          riskBySeverity = risks.reduce((acc, risk) => {
+          riskBySeverity = risks.reduce((acc: Record<string, number>, risk) => {
             acc[risk.severity] = (acc[risk.severity] || 0) + 1
             return acc
           }, {})
-          riskByStatus = risks.reduce((acc, risk) => {
+          riskByStatus = risks.reduce((acc: Record<string, number>, risk) => {
             acc[risk.status] = (acc[risk.status] || 0) + 1
             return acc
           }, {})
@@ -126,15 +123,15 @@ export default function AdminAnalytics() {
       try {
         const { data: assets } = await supabase.from('assets').select('status, type, condition')
         if (assets) {
-          assetByStatus = assets.reduce((acc, asset) => {
+          assetByStatus = assets.reduce((acc: Record<string, number>, asset) => {
             acc[asset.status || 'unknown'] = (acc[asset.status || 'unknown'] || 0) + 1
             return acc
           }, {})
-          assetByType = assets.reduce((acc, asset) => {
+          assetByType = assets.reduce((acc: Record<string, number>, asset) => {
             acc[asset.type || 'unknown'] = (acc[asset.type || 'unknown'] || 0) + 1
             return acc
           }, {})
-          assetByCondition = assets.reduce((acc, asset) => {
+          assetByCondition = assets.reduce((acc: Record<string, number>, asset) => {
             acc[asset.condition || 'unknown'] = (acc[asset.condition || 'unknown'] || 0) + 1
             return acc
           }, {})

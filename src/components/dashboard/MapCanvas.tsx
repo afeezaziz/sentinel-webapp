@@ -107,7 +107,7 @@ export default function MapCanvas({
   const mapRef = useRef<L.Map>(null)
 
   // Convert GeoJSON coordinates to [lat, lng] format for Leaflet
-  const pipelineCoordinates = pipelineGeoJson.coordinates.map(([lng, lat]) => [lat, lng])
+  const pipelineCoordinates: [number, number][] = pipelineGeoJson.coordinates.map(([lng, lat]) => [lat, lng])
 
   return (
     <div className="h-full w-full">

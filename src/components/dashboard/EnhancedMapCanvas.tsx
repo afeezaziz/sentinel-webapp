@@ -106,7 +106,7 @@ export default function EnhancedMapCanvas({
   const [imageOpacity, setImageOpacity] = useState([100])
 
   // Convert GeoJSON coordinates to [lat, lng] format for Leaflet
-  const pipelineCoordinates = pipelineGeoJson.coordinates.map(([lng, lat]) => [lat, lng])
+  const pipelineCoordinates: [number, number][] = pipelineGeoJson.coordinates.map(([lng, lat]) => [lat, lng])
 
   // Animation frames for before/after
   const animationFrames = [

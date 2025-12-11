@@ -10,7 +10,6 @@ import RiskDetail from './pages/RiskDetail'
 import Assets from './pages/Assets'
 import AssetDetail from './pages/AssetDetail'
 import Analytics from './pages/Analytics'
-import Settings from './pages/Settings'
 
 // Admin pages
 import AdminDashboard from './pages/admin/Dashboard'
