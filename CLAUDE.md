@@ -1,0 +1,1 @@
+- There is no need to test the application by running "npm run dev" because it is running on a another terminal.
